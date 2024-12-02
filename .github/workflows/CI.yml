@@ -32,7 +32,6 @@ jobs:
       
       # Step 5: Train the Model
       - name: Train Model
-        env:
         run: python train.py 
 
 

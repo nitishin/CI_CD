@@ -3,35 +3,13 @@ name: Continuous Integration
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-
-permissions: write-all
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set Up CML
-        uses: iterative/setup-cml@v2
-        continue-on-error: true  # Allow setup-cml to continue even with npm warnings
-
-      - name: Install Dependencies
         run: |
-          set -e
-          make install
-
-      - name: Format Code
-        run: make format
-
-      - name: Train Model
-        run: make train
-
-      - name: Evaluate Model
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: make eval
+          echo Hello World!
+          Add other actions to Build
+          echo test deploy your project

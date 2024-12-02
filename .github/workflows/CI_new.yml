@@ -7,78 +7,18 @@ on:
   workflow_dispatch:
   
 permissions: write-all
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Check out the code
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      
-      # Step 2: Set up CML
-      - name: Set Up CML
-        uses: iterative/setup-cml@v2
-      
-      # Step 3: Install Dependencies
+      - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v2
       - name: Install Packages
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-      
-      # Step 4: Code Formatting
-      - name: Format Code
-        run: black *.py
-      
-      # Step 5: Train the Model
-      - name: Train Model
-<<<<<<< HEAD
-        run: python train.py 
-
-____________________________________________________________
-
-name: Continuous Integration
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-  
-permissions: write-all
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      # Step 1: Check out the code
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      
-      # Step 2: Set up CML
-      - name: Set Up CML
-        uses: iterative/setup-cml@v2
-      
-      # Step 3: Install Dependencies
-      - name: Install Packages
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-      
-      # Step 4: Code Formatting
-      - name: Format Code
-        run: black *.py
-      
-      # Step 5: Train the Model
-      - name: Train Model
-        run: python train.py 
-
-
-
-
-
-=======
-        run: python train.py
+        run: make install
+      - name: Format
+        run: make format
+      - name: Train
+        run: make train
       - name: Evaluation
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -88,4 +28,3 @@ jobs:
           NAME: ${{ secrets.USER_NAME }}
           EMAIL: ${{ secrets.USER_EMAIL }}
         run: make update-branch USER_NAME=$NAME USER_EMAIL=$EMAIL
->>>>>>> beb191e10bef44333ba3cfd848df0de080611011

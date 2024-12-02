@@ -22,11 +22,13 @@ jobs:
       
       # Step 3: Install Dependencies
       - name: Install Packages
-        run: make install
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
       
       # Step 4: Code Formatting
       - name: Format Code
-        run: make format
+        run: black *.py
       
       # Step 5: Train the Model
       - name: Train Model

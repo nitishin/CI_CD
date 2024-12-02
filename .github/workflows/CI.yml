@@ -18,7 +18,7 @@ jobs:
       
       # Step 2: Set up CML
       - name: Set Up CML
-        uses: iterative/setup-cml@v1
+        uses: iterative/setup-cml@v2
       
       # Step 3: Install Dependencies
       - name: Install Packages
@@ -32,7 +32,10 @@ jobs:
       
       # Step 5: Train the Model
       - name: Train Model
-        run: make train
+        env:
+          RAW_DATA_DIR: "CI_CD\Data\drug200.csv"
+        run: python data_processing.py $RAW_DATA_DIR
+
 
       # Step 6: Evaluation
       - name: Evaluate Model

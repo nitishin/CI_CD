@@ -1,11 +1,17 @@
-name: Print Pi Workflow
+name: CI
+
 on:
   push:
-    branches: [ "master" ]
+    # Specify the branch that will trigger the workflow
+    branches: [ "myfeature" ]
+
 jobs:
-  print-pi-job:
-    runs-on: macos-latest
+  # Write name of the job as a key
+  hello-from-runner:
+    # Specify the runner machine
+    runs-on: ubuntu-22.04
     steps:
-      - name: Print Pi Step
+      # Write the step name
+      - name: Print Name
         run: |
-          echo pi=`echo "4*a(1)" | bc -l`
+          echo "Hello from $(whoami)"

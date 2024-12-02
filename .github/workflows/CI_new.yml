@@ -32,24 +32,4 @@ jobs:
       
       # Step 5: Train the Model
       - name: Train Model
-        run: python train.py 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      # Step 6: Evaluation
-      - name: Evaluate Model
-      env:
-        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for CML
-      run: |
-        make eval
+        run: python train.py

@@ -1,15 +1,11 @@
-name: Continuous Integration
-
+name: Print Pi Workflow
 on:
   push:
-    branches: [ "main" ]
-
+    branches: [ "master" ]
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  print-pi-job:
+    runs-on: macos-latest
     steps:
-      - name: Checkout Code
+      - name: Print Pi Step
         run: |
-          echo Hello World!
-          Add other actions to Build
-          echo test deploy your project
+          echo pi=`echo "4*a(1)" | bc -l`

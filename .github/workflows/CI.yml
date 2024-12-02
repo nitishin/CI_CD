@@ -7,19 +7,33 @@ on:
   workflow_dispatch:
   
 permissions: write-all
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: iterative/setup-cml@v2
+      # Step 1: Check out the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      
+      # Step 2: Set up CML
+      - name: Set Up CML
+        uses: iterative/setup-cml@v2
+      
+      # Step 3: Install Dependencies
       - name: Install Packages
         run: make install
-      - name: Format
+      
+      # Step 4: Code Formatting
+      - name: Format Code
         run: make format
-      - name: Train
+      
+      # Step 5: Train the Model
+      - name: Train Model
         run: make train
-      - name: Evaluation
+
+      # Step 6: Evaluation
+      - name: Evaluate Model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: make eval

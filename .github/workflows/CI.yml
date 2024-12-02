@@ -1,38 +1,36 @@
 name: Continuous Integration
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-  
+
 permissions: write-all
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Check out the code
       - name: Checkout Code
         uses: actions/checkout@v3
-      
-      # Step 2: Set up CML
+
       - name: Set Up CML
         uses: iterative/setup-cml@v2
-      
-      # Step 3: Install Dependencies
-      - name: Install Packages
-        run: make install
-      
-      # Step 4: Code Formatting
+        continue-on-error: true  # Allow setup-cml to continue even with npm warnings
+
+      - name: Install Dependencies
+        run: |
+          set -e
+          make install
+
       - name: Format Code
         run: make format
-      
-      # Step 5: Train the Model
+
       - name: Train Model
         run: make train
 
-      # Step 6: Evaluation
       - name: Evaluate Model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}

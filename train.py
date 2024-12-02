@@ -1,7 +1,11 @@
 import pandas as pd
 import os
 
+<<<<<<< HEAD
 drug_df = pd.read_csv(r"Data\drug200.csv")
+=======
+drug_df = pd.read_csv(r"Data/drug200.csv")
+>>>>>>> c44e78bae402def5c0e98b3c13e9b40f0b6912e0
 drug_df = drug_df.sample(frac=1)
 drug_df.head(3)
 
@@ -49,7 +53,7 @@ f1 = f1_score(y_test, predictions, average="macro")
 print("Accuracy:", str(round(accuracy, 2) * 100) + "%", "F1:", round(f1, 2))
 
 with open(r"Results/metrics.txt", "w") as outfile:
-    outfile.write(f"\nAccuracy = {accuracy.round(2)}, F1 Score = {f1.round(2)}.")
+    outfile.write(f"\nAccuracy = {round(accuracy, 2)}, F1 Score = {round(f1, 2)}.")
 
 
 import matplotlib.pyplot as plt

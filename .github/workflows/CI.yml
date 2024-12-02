@@ -33,7 +33,7 @@ jobs:
       # Step 5: Train the Model
       - name: Train Model
         env:
-          RAW_DATA_DIR: "CI_CD\Data\drug200.csv"
+          RAW_DATA_DIR: "./CI_CD/Data/drug200.csv"
         run: python data_processing.py $RAW_DATA_DIR
 
 

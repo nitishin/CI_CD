@@ -9,7 +9,7 @@ jobs:
   # Write name of the job as a key
   hello-from-runner:
     # Specify the runner machine
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       # Write the step name
       - name: Print Name

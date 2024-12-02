@@ -1,7 +1,11 @@
 import pandas as pd
 import os
 
+<<<<<<< HEAD
 drug_df = pd.read_csv(r"CI_CD\Data\drug200.csv")
+=======
+drug_df = pd.read_csv(r"Data/drug200.csv")
+>>>>>>> beb191e10bef44333ba3cfd848df0de080611011
 drug_df = drug_df.sample(frac=1)
 drug_df.head(3)
 
